@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="Todo.Visual.Pediatrico.FormularioPediatrico"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Todo.Visual.Pediatrico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid >
+        <StackPanel Margin="20">
+            <TextBlock Text="Historia Clínica Pediátrica" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <!-- Datos Personales -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Datos Personales" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Nombre Completo:" Width="150"/>
+                    <TextBox Width="300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Fecha de Nacimiento:" Width="150"/>
+                    <DatePicker Width="150"/>
+                    <TextBlock Text="Edad:" Margin="20,0,0,0" Width="50"/>
+                    <TextBox Width="50"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Género:" Width="150"/>
+                    <ComboBox Width="150">
+                        <ComboBoxItem>Masculino</ComboBoxItem>
+                        <ComboBoxItem>Femenino</ComboBoxItem>
+                        <ComboBoxItem>Otro</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Nombre del Padre/Tutor:" Width="150"/>
+                    <TextBox Width="300"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Medidas Antropométricas -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Medidas Antropométricas" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Peso:" Width="150"/>
+                    <TextBox Width="100"/>
+                    <TextBlock Text="kg" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Altura:" Width="150"/>
+                    <TextBox Width="100"/>
+                    <TextBlock Text="cm" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Perímetro Cefálico:" Width="150"/>
+                    <TextBox Width="100"/>
+                    <TextBlock Text="cm" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Motivo de Consulta -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Motivo de Consulta" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBox Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+            </StackPanel>
+
+            <!-- Antecedentes Patológicos -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Antecedentes Patológicos" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <CheckBox Content="Alergias" Margin="0,0,0,5"/>
+                <CheckBox Content="Enfermedades Crónicas" Margin="0,0,0,5"/>
+                <CheckBox Content="Hospitalizaciones Previas" Margin="0,0,0,5"/>
+                <TextBox Height="100" TextWrapping="Wrap" AcceptsReturn="True" 
+                     PlaceholderText="Detalles de antecedentes patológicos"/>
+            </StackPanel>
+
+            <!-- Antecedentes Familiares -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Antecedentes Familiares" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <CheckBox Content="Enfermedades Hereditarias" Margin="0,0,0,5"/>
+                <CheckBox Content="Antecedentes de Enfermedades Crónicas" Margin="0,0,0,5"/>
+                <TextBox Height="100" TextWrapping="Wrap" AcceptsReturn="True" 
+                     PlaceholderText="Detalles de antecedentes familiares"/>
+            </StackPanel>
+
+            <!-- Evaluación Fisiológica -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Evaluación Fisiológica" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Frecuencia Cardíaca:" Width="200"/>
+                    <TextBox Width="100"/>
+                    <TextBlock Text="bpm" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Presión Arterial:" Width="200"/>
+                    <TextBox Width="50" PlaceholderText="Sist"/>
+                    <TextBlock Text="/" Margin="5,0,0,0"/>
+                    <TextBox Width="50" PlaceholderText="Diast"/>
+                    <TextBlock Text="mmHg" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Desarrollo Neurológico:" Width="200"/>
+                    <ComboBox Width="200">
+                        <ComboBoxItem>Normal</ComboBoxItem>
+                        <ComboBoxItem>Retraso Leve</ComboBoxItem>
+                        <ComboBoxItem>Retraso Significativo</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Vacunas -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Esquema de Vacunación" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <CheckBox Content="Vacunas al Día" Margin="0,0,0,5"/>
+                <TextBox Height="100" TextWrapping="Wrap" AcceptsReturn="True" 
+                     PlaceholderText="Detalles de vacunas recibidas"/>
+            </StackPanel>
+
+            <!-- Observaciones -->
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Observaciones Generales" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBox Height="150" TextWrapping="Wrap" AcceptsReturn="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
