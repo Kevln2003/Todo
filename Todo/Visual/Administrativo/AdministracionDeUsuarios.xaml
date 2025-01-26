@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Todo.Visual.Administrativo.AdministracionDeUsuarios"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Todo.Visual.Administrativo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="12">
+            <Button Content="Crear Usuario" Click="CrearUsuario_Click"/>
+            <Button Content="Eliminar Usuario" Click="EliminarUsuario_Click"/>
+            <Button Content="Bloquear Usuario" Click="BloquearUsuario_Click"/>
+            <Button Content="Cambiar Contraseña" Click="CambiarContrasena_Click"/>
+        </StackPanel>
+
+        <ListView x:Name="UsuariosListView" Grid.Row="1" Margin="12">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nombre}" Margin="0,0,12,0"/>
+                        <TextBlock Text="{Binding Usuario}" Margin="0,0,12,0"/>
+                        <TextBlock Text="{Binding Estado}" Margin="0,0,12,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

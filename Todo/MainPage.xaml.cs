@@ -1,4 +1,5 @@
-﻿using Todo.Visual.Administrativo;
+﻿using Todo.Logica;
+using Todo.Visual.Administrativo;
 using Todo.Visual.Deporte;
 using Todo.Visual.Pediatrico;
 using Windows.UI.Xaml;
@@ -14,6 +15,10 @@ namespace Todo
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Usuario usuario = new Usuario(1, "Juan Pérez", "juan.perez@example.com", "contraseña123", "Medicina Deportiva");
+        Usuario usuario2 = new Usuario(1, "Maria Jose", "Maria.perez@example.com", "contraseña1234", "Pediatría");
+        //Admin
+        Usuario usuario3 = new Usuario(1, "Maria Jose", "Maria.3@example.com", "contraseña", "Administración");
         public MainPage()
         {
             this.InitializeComponent();
@@ -22,46 +27,34 @@ namespace Todo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string especialidadSeleccionada = (EspecialidadComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
-            string usuario = UsuarioTextBox.Text;
+            string usuarioIngreso = UsuarioTextBox.Text;
             string contrasena = ContrasenaPasswordBox.Password;
 
             // Validación de credenciales según la especialidad seleccionada
-            if (especialidadSeleccionada == "Medicina Deportiva")
+            if (string.IsNullOrEmpty(especialidadSeleccionada))
             {
-                if (usuario == "Gringo" && contrasena == "2022")
-                {
-                    Frame.Navigate(typeof(MedicinaDeportiva));
-                }
-                else
-                {
-                    MostrarMensajeError("Usuario o contraseña incorrectos para Medicina Deportiva.");
-                }
+                MostrarMensajeError("Por favor seleccione una especialidad.");
+                return;
             }
-            else if (especialidadSeleccionada == "Pediatría")
+
+            if (usuario.ValidarCredenciales(usuarioIngreso, contrasena, especialidadSeleccionada) && especialidadSeleccionada == "Medicina Deportiva")
             {
-                if (usuario == "Luna" && contrasena == "2019")
-                {
-                    Frame.Navigate(typeof(Pediatria));
-                }
-                else
-                {
-                    MostrarMensajeError("Usuario o contraseña incorrectos para Pediatría.");
-                }
-            } 
-            else if (especialidadSeleccionada == "Administración")
+                Usuario medicoDeportivo = new Usuario(usuario.Id, usuario.Nombre, usuario.Email, usuario.Contraseña, usuario.Tipo);
+                Frame.Navigate(typeof(MedicinaDeportiva), medicoDeportivo);
+            }
+            else if (usuario2.ValidarCredenciales(usuarioIngreso, contrasena, especialidadSeleccionada) && especialidadSeleccionada == "Pediatría")
             {
-                if (usuario == "Enano" && contrasena == "2022")
-                {
-                    Frame.Navigate(typeof(AdminTracion));
-                }
-                else
-                {
-                    MostrarMensajeError("Usuario o contraseña incorrectos para Pediatría.");
-                }
+                Usuario pediatricoUsuario = new Usuario(usuario2.Id, usuario2.Nombre, usuario2.Email, usuario2.Contraseña, usuario2.Tipo);
+                Frame.Navigate(typeof(Pediatria), pediatricoUsuario);
+            }
+            else if (usuario3.ValidarCredenciales(usuarioIngreso, contrasena, especialidadSeleccionada) && especialidadSeleccionada == "Administración")
+            {
+                Usuario administrativoUsuario = new Usuario(usuario3.Id, usuario3.Nombre, usuario3.Email, usuario3.Contraseña, usuario3.Tipo);
+                Frame.Navigate(typeof(AdminTracion), administrativoUsuario);
             }
             else
             {
-                MostrarMensajeError("Por favor seleccione una especialidad.");
+                MostrarMensajeError("Usuario o contraseña incorrectos.");
             }
         }
 
