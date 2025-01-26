@@ -124,6 +124,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visual\Administrativo\AdminTracion.xaml.cs">
+      <DependentUpon>AdminTracion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Visual\Deporte\BusquedaDePacienteDeportivo.xaml.cs">
       <DependentUpon>BusquedaDePacienteDeportivo.xaml</DependentUpon>
     </Compile>
@@ -147,9 +150,6 @@
     </Compile>
     <Compile Include="Visual\Pediatrico\Pediatria.xaml.cs">
       <DependentUpon>Pediatria.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Visual\Plantillas\Administracion.xaml.cs">
-      <DependentUpon>Administracion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Visual\Plantillas\Agendamiento.xaml.cs">
       <DependentUpon>Agendamiento.xaml</DependentUpon>
@@ -194,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Visual\Administrativo\AdminTracion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Visual\Deporte\BusquedaDePacienteDeportivo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,10 +227,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Visual\Pediatrico\Pediatria.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Visual\Plantillas\Administracion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

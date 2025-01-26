@@ -64,11 +64,7 @@ namespace Todo.Visual.Plantillas
             //Agendamiento
             NavigationRequested?.Invoke(this, "Agendamiento");
         }
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-            //Aminitracion
-            NavigationRequested?.Invoke(this, "Administracion");
-        }
+
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             //Ayuda

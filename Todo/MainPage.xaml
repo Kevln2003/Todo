@@ -35,6 +35,7 @@
                         <ComboBox x:Name="EspecialidadComboBox" Width="200" CornerRadius="10">
                             <ComboBoxItem Content="Pediatría"/>
                             <ComboBoxItem Content="Medicina Deportiva"/>
+                            <ComboBoxItem Content="Administración"/>
                         </ComboBox>
                     </StackPanel>
 

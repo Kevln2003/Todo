@@ -54,10 +54,7 @@ namespace Todo.Visual.Deporte
                 {
                     ContentFrame.Navigate(typeof(Agendamiento));
                 }
-                else if (pageType == "Administracion")
-                {
-                    ContentFrame.Navigate(typeof(Administracion));
-                }
+
                 else if (pageType == "Ayuda")
                 {
                     ContentFrame.Navigate(typeof(Ayuda));

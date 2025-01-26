@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Todo.Visual.Administrativo.AdminTracion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Todo.Visual.Administrativo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:fa="using:FontAwesome.UWP"
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="10">
+
+                <Button x:Name="RegresarButton" CornerRadius="10" Width="120" Height="50" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:FontAwesome Icon="ArrowLeft" Width="20" Height="20" Margin="5"/>
+                        <TextBlock Text="Regresar" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Width="Auto" CornerRadius="10" Height="50" Margin="5" >
+                    <StackPanel Orientation="Horizontal">
+                        <fa:FontAwesome Icon="User" Width="20" Height="20" Margin="5"/>
+                        <TextBlock Text="Gestión  de ususarios" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Width="Auto" CornerRadius="10" Height="50" Margin="5" >
+                    <StackPanel Orientation="Horizontal">
+                        <fa:FontAwesome Icon="File" Width="20" Height="20" Margin="5"/>
+                        <TextBlock Text="Gestión  de parametros" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                           
+            </StackPanel>
+            <!-- Contenido principal en el Frame -->
+            <Frame x:Name="ContentFrame" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+
+    </Grid>
+</Page>

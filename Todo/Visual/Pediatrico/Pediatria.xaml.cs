@@ -52,10 +52,6 @@ namespace Todo.Visual.Pediatrico
             {
                 ContentFrame.Navigate(typeof(Agendamiento));
             }
-            if (pageType == "Administracion")
-            {
-                ContentFrame.Navigate(typeof(Administracion));
-            }
             if (pageType == "Ayuda")
             {
                 ContentFrame.Navigate(typeof(Ayuda));
