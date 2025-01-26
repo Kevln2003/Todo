@@ -33,7 +33,7 @@ namespace Todo.Visual.Deporte
         }
         private void SeguimientoDePaciente_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(BusquedaDePacienteDeportivo));
+            EspacioParaElFormulario2.Navigate(typeof(BusquedaDePacienteDeportivo));
         }
     }
 }

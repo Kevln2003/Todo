@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Todo.Visual.Deporte;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,9 +19,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Todo.Visual.Plantillas
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Historial : Page
     {
         private ObservableCollection<PacienteViewModel> resultados;
@@ -49,7 +47,6 @@ namespace Todo.Visual.Plantillas
                     UltimaVisita = "Última visita: 15/01/2025",
                     Initial = "JP"
                 });
-
                 resultados.Add(new PacienteViewModel
                 {
                     NombreCompleto = "María Pérez Rodríguez",
@@ -67,8 +64,8 @@ namespace Todo.Visual.Plantillas
 
             if (paciente != null)
             {
-                // Aquí implementas la navegación a la ficha del paciente
-                // Frame.Navigate(typeof(FichaPaciente), paciente);
+                // Navegación al formulario
+                this.Frame.Navigate(typeof(Formulario), paciente);
             }
         }
     }

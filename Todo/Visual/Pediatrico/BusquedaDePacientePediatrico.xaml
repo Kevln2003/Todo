@@ -9,11 +9,8 @@
     
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid Padding="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -26,7 +23,6 @@
 
         <!-- Campos de búsqueda -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
-
             <TextBlock Text="Apellido:" FontSize="16" Margin="0,10,0,0"/>
             <TextBox x:Name="ApellidoTextBox" PlaceholderText="Ingrese el apellido" Margin="0,0,0,10"/>
 
@@ -34,7 +30,14 @@
             <TextBox x:Name="CedulaTextBox" PlaceholderText="Ingrese la cédula" Margin="0,0,0,10"/>
 
             <Border CornerRadius="10" Margin="0,20,0,0">
-                <Button Background="#00796B" CornerRadius="10" Foreground="White" Padding="12" BorderBrush="#B2DFDB" BorderThickness="1" HorizontalAlignment="Center">
+                <Button Background="#00796B" 
+                        CornerRadius="10" 
+                        Foreground="White" 
+                        Padding="12" 
+                        BorderBrush="#B2DFDB" 
+                        BorderThickness="1" 
+                        HorizontalAlignment="Center"
+                        Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <fa:FontAwesome Icon="Search" Width="24" Height="24" Foreground="White"/>
                         <TextBlock Text="Buscar" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
@@ -44,25 +47,75 @@
         </StackPanel>
 
         <!-- Resultados de búsqueda -->
-        <StackPanel Grid.Row="2" Margin="0,20,0,0">
-            <TextBlock Text="Resultados:" FontSize="18" FontWeight="Bold"/>
-            <ListView x:Name="ResultadosListView" Margin="0,10,0,0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Nombre}" FontWeight="SemiBold"/>
-                            <TextBlock Text="{Binding Apellido}" />
-                            <TextBlock Text="{Binding Cedula}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+        <ScrollViewer Grid.Row="2" Margin="0,20,0,0">
+            <StackPanel>
+                <TextBlock Text="Resultados:" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+                <ItemsControl x:Name="ResultadosItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White" 
+                                    BorderBrush="#E0E0E0" 
+                                    BorderThickness="1" 
+                                    CornerRadius="10" 
+                                    Margin="0,0,0,15" 
+                                    Height="120">
+                                <Grid Margin="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-        <!-- Botón Regresar -->
-        <StackPanel Grid.Row="3" Margin="0,30,0,10" HorizontalAlignment="Center">
+                                    <!-- Avatar o Inicial -->
+                                    <Border Grid.Column="0" 
+                                            Width="50" 
+                                            Height="50" 
+                                            CornerRadius="25" 
+                                            Background="#E3F2FD"
+                                            VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Initial}" 
+                                                   FontSize="20" 
+                                                   HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#1976D2"/>
+                                    </Border>
 
-        </StackPanel>
+                                    <!-- Información del paciente -->
+                                    <StackPanel Grid.Column="1" 
+                                              Margin="15,0" 
+                                              VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding NombreCompleto}" 
+                                                   FontSize="18" 
+                                                   FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding Cedula}" 
+                                                   Foreground="Gray" 
+                                                   Margin="0,5"/>
+                                        <TextBlock Text="{Binding UltimaVisita}" 
+                                                   Foreground="Gray"/>
+                                    </StackPanel>
 
+                                    <!-- Botón de ingreso -->
+                                    <Button Grid.Column="2" 
+                                            VerticalAlignment="Center"
+                                            Background="#00796B"
+                                            Foreground="White"
+                                            CornerRadius="5"
+                                            Padding="15,8"
+                                            Click="IngresarButton_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <fa:FontAwesome Icon="SignIn" 
+                                                           Width="16" 
+                                                           Height="16"/>
+                                            <TextBlock Text="Ingresar" 
+                                                       Margin="8,0,0,0"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

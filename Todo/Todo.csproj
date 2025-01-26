@@ -169,9 +169,6 @@
     <Compile Include="Visual\Plantillas\Modulos.xaml.cs">
       <DependentUpon>Modulos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Visual\Plantillas\UsuarioEnBusqueda.xaml.cs">
-      <DependentUpon>UsuarioEnBusqueda.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -254,10 +251,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Visual\Plantillas\Modulos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Visual\Plantillas\UsuarioEnBusqueda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
