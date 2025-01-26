@@ -91,6 +91,7 @@ namespace Todo.Visual.Plantillas
 
         private void PrevWeek_Click(object sender, RoutedEventArgs e)
         {
+            //Hola
             currentDate = currentDate.AddDays(-7);
             UpdateCalendarView();
         }

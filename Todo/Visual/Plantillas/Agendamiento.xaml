@@ -192,7 +192,7 @@
                     <StackPanel Orientation="Horizontal" 
                            HorizontalAlignment="Right">
                         <Button Content="Cancelar" 
-                            Margin="0,0,10,0" 
+                            Margin="1,0,10,0" 
                             Click="CerrarPopup"/>
                         <Button Content="Guardar" 
                             Background="#007ACC" 
