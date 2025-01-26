@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Todo.Visual.Pediatrico;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -29,6 +30,10 @@ namespace Todo.Visual.Deporte
         private void IngresoDePaciente_Click(object sender, RoutedEventArgs e)
         {
             EspacioParaElFormulario2.Navigate(typeof(Formulario));
+        }
+        private void SeguimientoDePaciente_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BusquedaDePacienteDeportivo));
         }
     }
 }

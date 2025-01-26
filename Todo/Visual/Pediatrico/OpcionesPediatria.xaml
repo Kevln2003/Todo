@@ -13,24 +13,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Buttons row -->
             <RowDefinition Height="*"/>
+            <!-- Form row -->
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,50">
-            <Button x:Name="IngresoDePaciente" CornerRadius="10" Width="190" Height="50" Click="IngresoDePaciente_Click" >
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,50">
+            <Button x:Name="IngresoDePaciente" CornerRadius="10" Width="190" Height="50" Click="IngresoDePaciente_Click">
                 <StackPanel Orientation="Horizontal">
                     <fa:FontAwesome Icon="UserPlus" Width="20" Height="20" Margin="5"/>
                     <TextBlock Text="Ingreso de paciente" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="SeguimientoDePaciente" CornerRadius="10" Width="230" Height="50"  Margin="20,0,0,0">
+            <Button x:Name="SeguimientoDePaciente" CornerRadius="10" Width="230" Height="50" Margin="20,0,0,0" Click="SeguimientoDePaciente_Click">
                 <StackPanel Orientation="Horizontal">
                     <fa:FontAwesome Icon="Clipboard" Width="20" Height="20" Margin="5"/>
                     <TextBlock Text="Seguimiento de paciente" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-
         </StackPanel>
-        <Frame x:Name="EspacioParaElFormulario" Grid.Column="1"/>
+
+        <Frame x:Name="EspacioParaElFormulario" Grid.Row="1"/>
     </Grid>
 </Page>

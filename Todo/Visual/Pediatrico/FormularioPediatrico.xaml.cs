@@ -26,5 +26,15 @@ namespace Todo.Visual.Pediatrico
         {
             this.InitializeComponent();
         }
+        // Método para el evento Click del botón "Confirmar"
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Lógica para procesar los datos cuando se hace clic en el botón "Confirmar"
+            // Aquí puedes validar los campos o enviar los datos
+
+            // Ejemplo simple de mensaje de confirmación
+            var messageDialog = new Windows.UI.Popups.MessageDialog("¡Formulario confirmado!");
+            messageDialog.ShowAsync();
+        }
     }
 }
