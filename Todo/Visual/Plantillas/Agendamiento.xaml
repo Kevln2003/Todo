@@ -7,8 +7,200 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
+        <Grid.Resources>
+                <Style x:Key="CalendarDayButtonStyle" TargetType="Button">
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="MinHeight" Value="80"/>
+                </Style>
 
+                <Style x:Key="DisabledDayStyle" TargetType="Button" BasedOn="{StaticResource CalendarDayButtonStyle}">
+                    <Setter Property="Background" Value="#F0F0F0"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Navegación y título -->
+            <StackPanel Grid.Row="0" Margin="20,10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="PrevMonthBtn" 
+                Content="&#x2190;" 
+                Width="40" 
+                Height="40"
+                Margin="5"
+                Click="PrevMonth_Click"/>
+
+                <TextBlock x:Name="MonthYearText"
+                   Text="ENERO 2025" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   VerticalAlignment="Center"
+                   Margin="20,0"/>
+
+                <Button x:Name="NextMonthBtn" 
+                Content="&#x2192;" 
+                Width="40" 
+                Height="40"
+                Margin="5"
+                Click="NextMonth_Click"/>
+            </StackPanel>
+
+            <!-- Navegación de semanas -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="PrevWeekBtn" 
+                Content="Semana Anterior" 
+                Margin="5"
+                Click="PrevWeek_Click"/>
+                <TextBlock x:Name="WeekText" 
+                   Text="Semana 1" 
+                   VerticalAlignment="Center" 
+                   Margin="20,0"/>
+                <Button x:Name="NextWeekBtn" 
+                Content="Siguiente Semana" 
+                Margin="5"
+                Click="NextWeek_Click"/>
+            </StackPanel>
+
+            <!-- Calendario -->
+            <Grid Grid.Row="2" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Encabezado de días -->
+                <Grid Background="#222222">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <!-- Columna para horas -->
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="HORA" Grid.Column="0" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Lunes" Text="LUNES" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Martes" Text="MARTES" Grid.Column="2" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Miercoles" Text="MIÉRCOLES" Grid.Column="3" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Jueves" Text="JUEVES" Grid.Column="4" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Viernes" Text="VIERNES" Grid.Column="5" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Sabado" Text="SÁBADO" Grid.Column="6" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                    <TextBlock x:Name="Domingo" Text="DOMINGO" Grid.Column="7" Foreground="White" HorizontalAlignment="Center" Padding="10"/>
+                </Grid>
+
+                <!-- Horarios y citas -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="HorariosControl">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Hora -->
+                                    <Border BorderBrush="LightGray" BorderThickness="1">
+                                        <TextBlock Text="{Binding Hora}" 
+                                           Padding="5" 
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <!-- Celdas de citas para cada día -->
+                                    <Button Grid.Column="1" Style="{Binding Monday.Style}" Click="CitaClick" Tag="{Binding Monday}">
+                                        <TextBlock Text="{Binding Monday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="2" Style="{Binding Tuesday.Style}" Click="CitaClick" Tag="{Binding Tuesday}">
+                                        <TextBlock Text="{Binding Tuesday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="3" Style="{Binding Wednesday.Style}" Click="CitaClick" Tag="{Binding Wednesday}">
+                                        <TextBlock Text="{Binding Wednesday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="4" Style="{Binding Thursday.Style}" Click="CitaClick" Tag="{Binding Thursday}">
+                                        <TextBlock Text="{Binding Thursday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="5" Style="{Binding Friday.Style}" Click="CitaClick" Tag="{Binding Friday}">
+                                        <TextBlock Text="{Binding Friday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="6" Style="{Binding Saturday.Style}" Click="CitaClick" Tag="{Binding Saturday}">
+                                        <TextBlock Text="{Binding Saturday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Grid.Column="7" Style="{Binding Sunday.Style}" Click="CitaClick" Tag="{Binding Sunday}">
+                                        <TextBlock Text="{Binding Sunday.Appointments}" TextWrapping="Wrap"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+
+            <!-- Popup para nueva cita -->
+        <Popup x:Name="CitaPopup" Grid.RowSpan="3">
+            <Border Background="White" 
+                BorderBrush="Gray" 
+                BorderThickness="1" 
+                CornerRadius="10" 
+                Padding="20" 
+                Width="300">
+                <StackPanel>
+                    <TextBlock Text="Nueva Cita Médica" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Fecha y hora:"/>
+                    <TextBlock x:Name="FechaHoraSeleccionada" 
+                           FontWeight="SemiBold" 
+                           Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Nombre del paciente:"/>
+                    <TextBox x:Name="NombrePacienteTextBox" 
+                         Margin="0,5,0,15" 
+                         PlaceholderText="Ingrese nombre del paciente"/>
+
+
+
+                    <TextBlock Text="Observaciones:"/>
+                    <TextBox x:Name="ObservacionesTextBox" 
+                         Height="60" 
+                         TextWrapping="Wrap" 
+                         Margin="0,5,0,15" 
+                         PlaceholderText="Ingrese observaciones"/>
+
+                    <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Right">
+                        <Button Content="Cancelar" 
+                            Margin="0,0,10,0" 
+                            Click="CerrarPopup"/>
+                        <Button Content="Guardar" 
+                            Background="#007ACC" 
+                            Foreground="White"
+                            Click="GuardarCita"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Page>
