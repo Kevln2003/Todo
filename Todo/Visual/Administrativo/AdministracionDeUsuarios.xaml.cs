@@ -37,6 +37,7 @@ namespace Todo.Visual.Administrativo
         {
              new Usuario(1, "Maria Jose", "Maria.perez@example.com", "contraseña1234", "Pediatría"),
              new Usuario(1, "Juan Pérez", "juan.perez@example.com", "contraseña123", "Medicina Deportiva")
+             ///
         };
 
             UsuariosListView.ItemsSource = listaUsuarios;

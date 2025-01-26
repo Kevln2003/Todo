@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Todo.Logica
 {
-
+    //Poner la logica
         internal class Usuario
         {
             public int Id { get; set; }
