@@ -119,6 +119,24 @@ namespace Todo.Visual.Administrativo
             UsuarioTextBox.Text = usuario.Usuarios;
             AreaComboBox.SelectedItem = usuario.Area;
         }
+        private void FiltroAreaPassword_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            // Filtrar la lista de usuarios por el área seleccionada
+        }
+
+        private void BuscarUsuarioPassword_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            // Filtrar la lista de usuarios según el texto de búsqueda
+        }
+
+        private void UsuarioPassword_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                var usuario = e.AddedItems[0] as Usuario;
+                UsuarioSeleccionadoText.Text = $"Usuario seleccionado: {usuario.NombreCompleto}";
+            }
+        }
     }
 
     public class Usuario

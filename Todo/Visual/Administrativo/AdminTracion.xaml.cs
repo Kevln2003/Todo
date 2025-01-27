@@ -31,5 +31,10 @@ namespace Todo.Visual.Administrativo
         {
             Frame.Navigate(typeof(MainPage));
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(AdministracionDeUsuarios));
+        }
     }
 }

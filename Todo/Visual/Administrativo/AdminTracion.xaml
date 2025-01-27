@@ -29,7 +29,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Width="Auto" CornerRadius="10" Height="50" Margin="5" >
+                <Button Width="Auto" CornerRadius="10" Height="50" Margin="5" Click="Button_Click_1" >
                     <StackPanel Orientation="Horizontal">
                         <fa:FontAwesome Icon="User" Width="20" Height="20" Margin="5"/>
                         <TextBlock Text="Gestión  de ususarios" VerticalAlignment="Center" Margin="5,0,0,0"/>
