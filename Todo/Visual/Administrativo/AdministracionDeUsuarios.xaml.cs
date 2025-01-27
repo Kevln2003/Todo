@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Todo.Logica;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,7 +22,7 @@ namespace Todo.Visual.Administrativo
     /// </summary>
     public sealed partial class AdministracionDeUsuarios : Page
     {
-   private List<Usuario> listaUsuarios;
+   ///private List<Usuario> listaUsuarios;
 
         public AdministracionDeUsuarios()
         {
@@ -33,14 +32,14 @@ namespace Todo.Visual.Administrativo
 
         private void CargarUsuarios()
         {
-            listaUsuarios = new List<Usuario>
+           // listaUsuarios = new List<Usuario>
         {
-             new Usuario(1, "Maria Jose", "Maria.perez@example.com", "contraseña1234", "Pediatría"),
-             new Usuario(1, "Juan Pérez", "juan.perez@example.com", "contraseña123", "Medicina Deportiva")
+            // new Usuario(1, "Maria Jose", "Maria.perez@example.com", "contraseña1234", "Pediatría"),
+             //new Usuario(1, "Juan Pérez", "juan.perez@example.com", "contraseña123", "Medicina Deportiva")
              ///
         };
 
-            UsuariosListView.ItemsSource = listaUsuarios;
+          ///  UsuariosListView.ItemsSource = listaUsuarios;
         }
 
         private void CrearUsuario_Click(object sender, RoutedEventArgs e)
