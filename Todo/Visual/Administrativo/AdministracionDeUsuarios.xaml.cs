@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,45 +24,110 @@ namespace Todo.Visual.Administrativo
     /// </summary>
     public sealed partial class AdministracionDeUsuarios : Page
     {
-   ///private List<Usuario> listaUsuarios;
+        private ObservableCollection<Usuario> usuarios;
 
         public AdministracionDeUsuarios()
         {
             this.InitializeComponent();
+            usuarios = new ObservableCollection<Usuario>();
             CargarUsuarios();
+            UsuariosListView.ItemsSource = usuarios;
         }
 
         private void CargarUsuarios()
         {
-           // listaUsuarios = new List<Usuario>
-        {
-            // new Usuario(1, "Maria Jose", "Maria.perez@example.com", "contraseña1234", "Pediatría"),
-             //new Usuario(1, "Juan Pérez", "juan.perez@example.com", "contraseña123", "Medicina Deportiva")
-             ///
-        };
-
-          ///  UsuariosListView.ItemsSource = listaUsuarios;
+            // Aquí cargarías los usuarios desde tu base de datos
+            // Este es solo un ejemplo
+            usuarios.Add(new Usuario
+            {
+                NombreCompleto = "Juan Pérez",
+                Usuarios = "jperez",
+                Area = "Pediatría",
+                Estado = "Activo",
+                Iniciales = "JP",
+                EstadoColor = new SolidColorBrush(Colors.Green)
+            });
         }
 
-        private void CrearUsuario_Click(object sender, RoutedEventArgs e)
+        private void AgregarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            // Lógica para crear un nuevo usuario
+            PopupTitle.Text = "Agregar Usuario";
+            LimpiarFormulario();
+            UserPopup.IsOpen = true;
+        }
+
+        private void EditarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Usuario usuario = button.DataContext as Usuario;
+            if (usuario != null)
+            {
+                PopupTitle.Text = "Editar Usuario";
+                CargarDatosUsuario(usuario);
+                UserPopup.IsOpen = true;
+            }
         }
 
         private void EliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            // Lógica para eliminar un usuario seleccionado
-        }
-
-        private void BloquearUsuario_Click(object sender, RoutedEventArgs e)
-        {
-            // Lógica para bloquear un usuario seleccionado
+            Button button = sender as Button;
+            Usuario usuario = button.DataContext as Usuario;
+            if (usuario != null)
+            {
+                // Implementar confirmación y eliminación
+            }
         }
 
         private void CambiarContrasena_Click(object sender, RoutedEventArgs e)
         {
-            // Lógica para cambiar la contraseña de un usuario seleccionado
+            PasswordPopup.IsOpen = true;
+        }
+
+        private void GuardarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementar guardado
+            UserPopup.IsOpen = false;
+        }
+
+        private void GuardarContrasena_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementar cambio de contraseña
+            PasswordPopup.IsOpen = false;
+        }
+
+        private void CancelarPopup_Click(object sender, RoutedEventArgs e)
+        {
+            UserPopup.IsOpen = false;
+        }
+
+        private void CancelarCambioContrasena_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordPopup.IsOpen = false;
+        }
+
+        private void LimpiarFormulario()
+        {
+            NombreTextBox.Text = string.Empty;
+            UsuarioTextBox.Text = string.Empty;
+            ContrasenaBox.Password = string.Empty;
+            AreaComboBox.SelectedIndex = -1;
+        }
+
+        private void CargarDatosUsuario(Usuario usuario)
+        {
+            NombreTextBox.Text = usuario.NombreCompleto;
+            UsuarioTextBox.Text = usuario.Usuarios;
+            AreaComboBox.SelectedItem = usuario.Area;
         }
     }
-}
 
+    public class Usuario
+    {
+        public string NombreCompleto { get; set; }
+        public string Usuarios { get; set; }
+        public string Area { get; set; }
+        public string Estado { get; set; }
+        public string Iniciales { get; set; }
+        public SolidColorBrush EstadoColor { get; set; }
+    }
+}
