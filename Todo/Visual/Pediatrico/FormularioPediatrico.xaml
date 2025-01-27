@@ -5,84 +5,97 @@
     xmlns:local="using:Todo.Visual.Pediatrico"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!-- Estilo global para TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <!-- Estilo global para mensajes de error -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Pivot x:Name="FormPivot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-                <!-- Datos Personales -->
-                <PivotItem Header="Datos Personales">
-                    <StackPanel Margin="20">
-                        <TextBlock Text="Nombre:" Margin="0,0,0,10" />
-                        <TextBox x:Name="NombreTextBox" PlaceholderText="Ingresa tu nombre" />
+            <!-- Datos Personales -->
+            <PivotItem Header="Datos Personales">
+                <StackPanel Margin="20">
+                    <!-- Nombre -->
+                    <TextBlock Text="Nombre:" Margin="0,0,0,10" />
+                    <TextBox x:Name="NombreTextBox" PlaceholderText="Ingresa tu nombre" />
+                    <TextBlock x:Name="NombreErrorText" Text="El campo 'Nombre' es obligatorio." />
 
-                        <TextBlock Text="Apellidos:" Margin="0,20,0,10" />
-                        <TextBox x:Name="ApellidosTextBox" PlaceholderText="Ingresa tus apellidos" />
+                    <!-- Apellidos -->
+                    <TextBlock Text="Apellidos:" Margin="0,20,0,10" />
+                    <TextBox x:Name="ApellidosTextBox" PlaceholderText="Ingresa tus apellidos" />
+                    <TextBlock x:Name="ApellidosErrorText" Text="El campo 'Apellidos' es obligatorio." />
 
-                        <TextBlock Text="Edad:" Margin="0,20,0,10" />
-                        <TextBox x:Name="EdadTextBox" PlaceholderText="Ingresa tu edad" />
+                    <!-- Edad -->
+                    <TextBlock Text="Edad:" Margin="0,20,0,10" />
+                    <TextBox x:Name="EdadTextBox" PlaceholderText="Ingresa tu edad" />
+                    <TextBlock x:Name="EdadErrorText" Text="El campo 'Edad' es obligatorio." />
 
-                        <TextBlock Text="Fecha de Nacimiento:" Margin="0,20,0,10" />
-                        <DatePicker x:Name="FechaNacimientoDatePicker" />
+                    <!-- Fecha de Nacimiento -->
+                    <TextBlock Text="Fecha de Nacimiento:" Margin="0,20,0,10" />
+                    <DatePicker x:Name="FechaNacimientoDatePicker" />
+                    <TextBlock x:Name="FechaNacimientoErrorText" Text="El campo 'Fecha de Nacimiento' es obligatorio." />
 
-                        <TextBlock Text="Género:" Margin="0,20,0,10" />
-                        <ComboBox x:Name="GeneroComboBox">
-                            <ComboBoxItem Content="Masculino" />
-                            <ComboBoxItem Content="Femenino" />
-                            <ComboBoxItem Content="Otro" />
-                        </ComboBox>
+                    <!-- Género -->
+                    <TextBlock Text="Género:" Margin="0,20,0,10" />
+                    <ComboBox x:Name="GeneroComboBox">
+                        <ComboBoxItem Content="Masculino" />
+                        <ComboBoxItem Content="Femenino" />
+                        <ComboBoxItem Content="Otro" />
+                    </ComboBox>
+                    <TextBlock x:Name="GeneroErrorText" Text="El campo 'Género' es obligatorio." />
 
-                        <TextBlock Text="Tipo de Sangre:" Margin="0,20,0,10" />
-                        <TextBox x:Name="TipoSangreTextBox" PlaceholderText="Ingresa tu tipo de sangre" />
+                    <!-- Cédula -->
+                    <TextBlock Text="Cédula:" Margin="0,20,0,10" />
+                    <TextBox x:Name="CedulaTextBox" PlaceholderText="Ingresa tu cédula" />
+                    <TextBlock x:Name="CedulaErrorText" Text="El campo 'Cédula' es obligatorio." />
+                </StackPanel>
+            </PivotItem>
 
-                        <TextBlock Text="Cédula:" Margin="0,20,0,10" />
-                        <TextBox x:Name="CedulaTextBox" PlaceholderText="Ingresa tu cédula" />
+            <!-- Medidas Antropométricas -->
+            <PivotItem Header="Medidas Antropométricas">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Peso (kg):" Margin="0,0,0,10" />
+                    <TextBox x:Name="PesoTextBox" PlaceholderText="Ingresa el peso en kg" />
+                    <TextBlock x:Name="ErrorPeso" Text="Ingresa un peso válido." />
 
-                        <TextBlock Text="Correo Electrónico:" Margin="0,20,0,10" />
-                        <TextBox x:Name="CorreoTextBox" PlaceholderText="Ingresa tu correo electrónico" />
+                    <TextBlock Text="Altura (cm):" Margin="0,20,0,10" />
+                    <TextBox x:Name="AlturaTextBox" PlaceholderText="Ingresa la altura en cm" />
+                    <TextBlock x:Name="ErrorAltura" Text="Ingresa una altura válida." />
+                </StackPanel>
+            </PivotItem>
 
-                        <TextBlock Text="Contacto Celular:" Margin="0,20,0,10" />
-                        <TextBox x:Name="ContactoTextBox" PlaceholderText="Ingresa tu número de celular" />
+            <!-- Motivo de Consulta -->
+            <PivotItem Header="Motivo de Consulta">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Describe el motivo de consulta:" Margin="0,0,0,10" />
+                    <TextBox x:Name="MotivoConsultaTextBox" PlaceholderText="Describe el motivo" AcceptsReturn="True" Height="100" />
+                    <TextBlock x:Name="ErrorMotivoConsulta" Text="El motivo de consulta es obligatorio." />
+                </StackPanel>
+            </PivotItem>
+            
+            <!-- Confirmación -->
+            <PivotItem Header="Confirmación">
+                <StackPanel Margin="20" HorizontalAlignment="Center">
+                    <TextBlock Text="Por favor, revisa los datos ingresados antes de confirmar." 
+                               TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,20" />
 
-                        <TextBlock Text="Antecedentes Personales:" Margin="0,20,0,10" />
-                        <TextBox x:Name="AntecedentesPersonalesTextBox" PlaceholderText="Describe tus antecedentes personales" AcceptsReturn="True" Height="100" />
-
-                        <TextBlock Text="Discapacidad:" Margin="0,20,0,10" />
-                        <TextBox x:Name="DiscapacidadTextBox" PlaceholderText="Describe alguna discapacidad" AcceptsReturn="True" Height="100" />
-
-                        <TextBlock Text="Antecedentes Deportivos:" Margin="0,20,0,10" />
-                        <TextBox x:Name="AntecedentesDeportivosTextBox" PlaceholderText="Describe tus antecedentes deportivos" AcceptsReturn="True" Height="100" />
-                    </StackPanel>
-                </PivotItem>
-
-                <!-- Medidas Antropométricas -->
-                <PivotItem Header="Medidas Antropométricas">
-                    <StackPanel Margin="20">
-                        <TextBlock Text="Peso (kg):" Margin="0,0,0,10" />
-                        <TextBox x:Name="PesoTextBox" PlaceholderText="Ingresa el peso en kg" />
-
-                        <TextBlock Text="Altura (cm):" Margin="0,20,0,10" />
-                        <TextBox x:Name="AlturaTextBox" PlaceholderText="Ingresa la altura en cm" />
-                    </StackPanel>
-                </PivotItem>
-
-                <!-- Motivo de Consulta -->
-                <PivotItem Header="Motivo de Consulta">
-                    <StackPanel Margin="20">
-                        <TextBlock Text="Describe el motivo de consulta:" Margin="0,0,0,10" />
-                        <TextBox x:Name="MotivoConsultaTextBox" PlaceholderText="Describe el motivo" AcceptsReturn="True" Height="100" />
-                    </StackPanel>
-                </PivotItem>
-
-                <!-- Confirmación -->
-                <PivotItem Header="Confirmación">
-                    <StackPanel Margin="20" HorizontalAlignment="Center">
-                        <TextBlock Text="Por favor, revisa los datos ingresados antes de confirmar." 
-                            TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,20" />
-
-                        <Button Content="Confirmar" Click="ConfirmButton_Click" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </PivotItem>
-            </Pivot>
-        </Grid>
+                    <Button Content="Confirmar" Click="ConfirmButton_Click" HorizontalAlignment="Center" />
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>
