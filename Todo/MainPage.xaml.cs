@@ -69,7 +69,7 @@ namespace Todo
         private void MostrarMensajeError(string mensaje)
         {
             var dialog = new ContentDialog
-            {
+            {///
                 Title = "Error de inicio de sesión",
                 Content = mensaje,
                 CloseButtonText = "Aceptar"
